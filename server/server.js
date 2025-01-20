@@ -116,13 +116,39 @@ server.listen(port, () => {
 });
 
 // API Endpoints for running model
-const run_econ_model = require("./run_econ_model.jsx");
 
-app.get("api/run_econ_model", (req, res) => {
-  //TO DO: link button state and run model when pushed
-  const results = run_econ_model();
-  res.send(results);
 
-})
+
+// app.get("/api/run_command", (req, res) => {
+//   res.send(test_data)
+// });
+
+// app.post("/api/run_command", (req, res) => {
+//   res.send(test_data);
+// })
+
+
+// const {run_econ_model} = require("./run_econ_model.jsx");
+
+// app.post("/api/run_econ_model", (req, res) => {
+//   try {
+//     const result = run_econ_model(); // Call the function
+//     res.status(200).json({ success: true, result }); // Send a JSON response
+//   } catch (error) {
+//     console.error('Error running the model:', error);
+//     res.status(500).json({ success: false, message: 'Failed to run the economic model' });
+//   }
+// });
+
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
+
+// app.get("api/run_econ_model", (req, res) => {
+//   //TO DO: link button state and run model when pushed
+//   const results = run_econ_model();
+//   res.send(results);
+
+// })
 
 // app.post()

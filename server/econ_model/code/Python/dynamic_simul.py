@@ -14,26 +14,27 @@ if __name__ == "__main__":
 
     
     
-    add_residuals = sys.argv[1]
-    remove_grpe = sys.argv[2]
-    remove_grpf = sys.argv[3]
-    remove_vu = sys.argv[4]
-    remove_shortage = sys.argv[5]
-    update_graphs = sys.argv[6]
+    # add_residuals = sys.argv[1]
+    # remove_grpe = sys.argv[2]
+    # remove_grpf = sys.argv[3]
+    # remove_vu = sys.argv[4]
+    # remove_shortage = sys.argv[5]
+    # update_graphs = sys.argv[6]
     
     base_dir = os.getcwd()
     
     # #Options
-    # add_residuals = False
-    # remove_grpe = False
-    # remove_grpf = False
-    # remove_vu = False
-    # remove_shortage = False
-    # update_graphs = True
+    add_residuals = False
+    remove_grpe = False
+    remove_grpf = False
+    remove_vu = False
+    remove_shortage = False
+    update_graphs = False
     
     # Load coefficients
     # coefficients_path = os.path.join(base_dir, "../../data/intermediate_data") # used when running standalone
-    coefficients_path = os.path.join(base_dir, "econ_model/data/intermediate_data") # used when running standalone
+    coefficients_path = os.path.join(base_dir, "econ_model/data/intermediate_data") # used when running on website
+    
     data = pd.read_excel(os.path.join(coefficients_path, "eq_simulations_data.xls"))
     gw_beta = pd.read_excel(os.path.join(coefficients_path, "eq_coefficients.xlsx"), sheet_name="gw", index_col = 0).beta
     gcpi_beta = pd.read_excel(os.path.join(coefficients_path, "eq_coefficients.xlsx"), sheet_name="gcpi", index_col = 0).beta
@@ -181,3 +182,4 @@ if __name__ == "__main__":
     results = [grpe_simul, gw_simul, gcpi_simul, diffcpicf_simul, cf10_simul, cf10_simul]
     
     print("Simulation complete!")
+    # print(results)

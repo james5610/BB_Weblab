@@ -45,10 +45,15 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+const test_data = ["a", "b", "c"];
+const run_econ_model = require("./run_econ_model.jsx");
+// import { run_econ_model } from "./run_econ_model";
 
-
-router.get("/run_econ_model", (req, res) => {
-  const values = run_econ_model
+router.get("/run_command", (req, res) => {
+  // run_econ_model;
+  values = [run_econ_model.run_econ_model()];
+  // values = run_econ_model.run_econ_model();
+  res.send(values);
 })
 
 
