@@ -32,8 +32,12 @@ if __name__ == "__main__":
     update_graphs = False
     
     # Load coefficients
-    # coefficients_path = os.path.join(base_dir, "../../data/intermediate_data") # used when running standalone
-    coefficients_path = os.path.join(base_dir, "econ_model/data/intermediate_data") # used when running on website
+    # First if block occurs when script is run by itself
+    # Second runs if script is run off the webpage
+    if base_dir == "C:\\Users\\james\\Dropbox\\Code_Dropbox\\Weblab\\Bernanke_Blanchard_Weblab\\server\\econ_model\\code\\Python":
+        coefficients_path = os.path.join(base_dir, "../../data/intermediate_data") # used when running standalone
+    else:
+        coefficients_path = os.path.join(base_dir, "server/econ_model/data/intermediate_data") # used when running on website
     
     data = pd.read_excel(os.path.join(coefficients_path, "eq_simulations_data.xls"))
     gw_beta = pd.read_excel(os.path.join(coefficients_path, "eq_coefficients.xlsx"), sheet_name="gw", index_col = 0).beta
@@ -178,8 +182,40 @@ if __name__ == "__main__":
         plt.ylabel("CF10")
         plt.legend()
         plt.show()
-        
-    results = [grpe_simul, gw_simul, gcpi_simul, diffcpicf_simul, cf10_simul, cf10_simul]
+    
+    # Convert results into format to be used in webpage
+    dates = list(data["period"])
+    grpe_simul = list(grpe_simul)
+    gw_simul = list(gw_simul)
+    gcpi_simul = list(gcpi_simul)
+    diffcpicf_simul = list(diffcpicf_simul)
+    cf10_simul = list(cf10_simul)
+    cf1_simul = list(cf1_simul)
+
+    results = [dates, grpe_simul, gw_simul, gcpi_simul, diffcpicf_simul, cf10_simul, cf1_simul]
+    
+    # Save data to Excel
+    results_df = pd.DataFrame({
+        "Dates": dates,
+        "grpe_simul": grpe_simul,
+        "gw_simul": gw_simul,
+        "gcpi_simul": gcpi_simul,
+        "diffcpicf_simul": diffcpicf_simul,
+        "cf10_simul": cf10_simul,
+        "cf1_simul": cf1_simul
+        })
+    
+    # Export Data
+    # First if block occurs when script is run by itself
+    # Second runs if script is run off the webpage
+    if base_dir == "C:\\Users\\james\\Dropbox\\Code_Dropbox\\Weblab\\Bernanke_Blanchard_Weblab\\server\\econ_model\\code\\Python":
+        output_path = os.path.join(base_dir, "../../data/output_data/dynamic_simul_results_weblab.xlsx") # used when running standalone
+    else:
+        output_path = os.path.join(base_dir, "server/econ_model/data/output_data/dynamic_simul_results_weblab.xlsx") # used when running on website
+    results_df.to_excel(output_path, index = False)
     
     print("Simulation complete!")
-    # print(results)
+    print(results)
+    
+    
+    

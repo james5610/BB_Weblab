@@ -1,11 +1,11 @@
 .Run-buttonContainer {
-  padding: 0 48%;
+  padding: 0% 48%;
 }
 
 .Run-button {
     /* make it responsive */
-    max-width: 100%;
-    width: 100%;
+    max-width: 200%;
+    width: 200%;
     height: auto;
     display: block;
     /* div height to be the same as width*/
@@ -25,38 +25,117 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../assets/scratch_texture.png");
+    background-image: url("../assets/run_button.png");
 }
 
+.Off-buttonContainer {
+  display: inline-block;
+  position: relative;
+}
 
+.Off-button {
+  display: block;
+  width: 100px;
+  height: 60px;
+  background-image: url("../assets/off_switch_v1.png");
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
 
-.Scratch-textureContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 48%;
-  }
-.Scratch-texture {
-    /* make it responsive */
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
-    /* div height to be the same as width*/
-    padding-top: 100%;
-  
-    /* Centering on image`s center*/
-    background-position-y: center;
-    background-position-x: center;
-    background-repeat: no-repeat;
-  
-    /* it makes the clue thing, takes smaller dimension to fill div */
-    background-size: cover;
-  
-    /* it is optional, for making this div centered in parent*/
-    margin: 0 auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("../assets/scratch_texture.png");
-  }
+input[type="checkbox"] {
+  display: none; /* Hide the actual checkbox */
+}
+
+input[type="checkbox"]:checked + .Off-button {
+  background-image: url('../assets/on_switch_v1.png'); /* Change image when checked */
+}
+
+/* Container for the grid */
+.Grid-container {
+  display: grid; /* Enable grid layout */
+  grid-template-columns: 1fr 1fr; /* Create two equal columns */
+  grid-template-rows: repeat(6, auto); /* Height based on content */
+  gap: 0px 10px;
+  padding: 5px; /* Add padding around the grid */
+  max-width: 500px; /* Set a maximum width for the container */
+  max-height: 100px; 
+  margin: auto 0; /* Centering options */
+  align-items: center; /* Vertically center items in all grid cells */
+}
+
+/* Text column styling */
+.Text-column {
+  font-size: 32px;
+  line-height: 1.6;
+}
+
+/* Image column styling */
+.Image-column img {
+  display: flex; /* Use flexbox for vertical alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  max-width: 50%;
+  height: auto;
+}
+
+/*********** Styling for Switches ****************/
+/* Container styling */
+.switch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+}
+
+/* Switch wrapper */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider (the visible switch part) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px; /* Rounded edges for the slider */
+}
+
+/* Slider circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%; /* Make the circle round */
+}
+
+/* Change background color when checked */
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+/* Move the circle when checked */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}

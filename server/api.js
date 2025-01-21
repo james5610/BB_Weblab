@@ -45,18 +45,19 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
-const test_data = ["a", "b", "c"];
 const run_econ_model = require("./run_econ_model.jsx");
-// import { run_econ_model } from "./run_econ_model";
 
-router.get("/run_command", (req, res) => {
-  // run_econ_model;
-  values = [run_econ_model.run_econ_model()];
-  // values = run_econ_model.run_econ_model();
-  res.send(values);
-})
+router.get("/run_econ_model", async (req, res) => {
+  const results = await run_econ_model.run_econ_model();
+  res.send(results);
+});
 
+const update_data = require("./update_data.jsx");
 
+router.get("/update_data", async (req, res) => {
+  const data = await update_data.update_data();
+  res.send(data);
+});
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
