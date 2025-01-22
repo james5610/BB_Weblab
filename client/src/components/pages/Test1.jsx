@@ -20,18 +20,15 @@ const Skeleton = () => {
       removeVuSwitch: removeVuSwitch.checked,
       removeShortageSwitch: removeShortageSwitch.checked,
       updateGraphsSwitch: updateGraphsSwitch.checked,
-      dummyVar: false, // We add this dummy var so a random "?" doesn't appear at end of get request
     };
-    let queryString = new URLSearchParams(params).toString();
-    let url = `./api/run_econ_model?${queryString}`;
-    console.log(url);
-    get(url).then((results) => {
-      console.log(results);
+
+    get("/api/run_econ_model", params).then((results) => {
+        console.log(results);
     });
   };
 
   const update_data = () => {
-    get("./api/update_data").then((data) => {
+    get("/api/update_data").then((data) => {
       console.log(data);
     });
   };
