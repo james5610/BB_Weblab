@@ -28,29 +28,6 @@
     background-image: url("../assets/run_button.png");
 }
 
-.Off-buttonContainer {
-  display: inline-block;
-  position: relative;
-}
-
-.Off-button {
-  display: block;
-  width: 100px;
-  height: 60px;
-  background-image: url("../assets/off_switch_v1.png");
-  background-size: cover;
-  cursor: pointer;
-  transition: background-image 0.3s ease;
-}
-
-input[type="checkbox"] {
-  display: none; /* Hide the actual checkbox */
-}
-
-input[type="checkbox"]:checked + .Off-button {
-  background-image: url('../assets/on_switch_v1.png'); /* Change image when checked */
-}
-
 /* Container for the grid */
 .Grid-container {
   display: grid; /* Enable grid layout */
