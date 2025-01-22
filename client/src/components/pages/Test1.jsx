@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useState, useContext, useEffect, useRef, createContext } from "react";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import "../../utilities.css";
 import "./Test1.css";
 import { get, post } from "../../utilities";
 import { UserContext } from "../App";
 import StackedBarChart from "./StackedBarChart";
+// Create the DataContext for shared state; helps update graph when run button is pressed
+import { DataProvider } from "./DataContext";
+import { DataContext } from "./DataContext";
 
 const Skeleton = () => {
   const { userId, handleLogin, handleLogout } = useContext(UserContext);
@@ -111,6 +114,38 @@ const Skeleton = () => {
     });
   }, []);
 
+  // For Updating Graph whenever run button is pressed
+  // const [sharedData, setSharedData] = useState([]); // Shared state for chart data
+  // "Run" button component
+  const RunButton = () => {
+    const { setSharedData } = useContext(DataContext);
+
+    const handleRun = async () => {
+      try {
+        // Define fetchData
+        const fetchData = async () => {
+          try {
+            let response = await get("./api/update_data");
+            return response;
+          } catch (error) {
+            console.error("Error fetching data in StackedBarChart:", error);
+            return [];
+          }
+        };
+
+        const response = await fetchData();
+        console.log(response);
+        setSharedData(response); // Update the shared data
+        // console.log(response);
+        // console.log(sharedData);
+      } catch (error) {
+        console.error("Error updating data:", error);
+      }
+    };
+
+    return <button onClick={handleRun}>Update Graph</button>;
+  };
+
   return (
     <>
       {userId ? (
@@ -130,8 +165,10 @@ const Skeleton = () => {
       <div
         className="Run-buttonContainer"
         onClick={() => {
-          run_econ_model();
+          // run_econ_model();
           update_data();
+          // console.log(`From Run button:`)
+          // console.log(sharedData)
         }}
       >
         <div className="Run-button" />
@@ -228,10 +265,13 @@ const Skeleton = () => {
             </div>
           </div>
         </div>
-        <div className="rightDiv">
-          {/* Graph Staging Grounds */}
+        <div className="rightDiv">Nothing here for now</div>
+
+        {/* Graph Staging Grounds */}
+        <DataProvider>
+          <RunButton />
           <StackedBarChart />
-        </div>
+        </DataProvider>
       </div>
     </>
   );
