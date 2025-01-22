@@ -24,6 +24,7 @@ const Skeleton = () => {
     };
     let queryString = new URLSearchParams(params).toString();
     let url = `./api/run_econ_model?${queryString}`;
+    console.log(url);
     get(url).then((results) => {
       console.log(results);
     });
