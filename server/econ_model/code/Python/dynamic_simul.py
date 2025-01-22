@@ -86,19 +86,32 @@ if __name__ == "__main__":
     shortage = data["shortage"].values
     magpty = data["magpty"].values
 
-    # Initialize simulation variables
+    # Initialize endogenous simulation variables
     gw_simul = gw[:4].tolist()
     gcpi_simul = gcpi[:4].tolist()
     cf1_simul = cf1[:4].tolist()
     cf10_simul = cf10[:4].tolist()
     diffcpicf_simul = diffcpicf[:4].tolist()
-
+    
+    # Initialize exogenous simulation variables
     grpe_simul = grpe.copy()
     grpf_simul = grpf.copy()
     vu_simul = vu.copy()
     shortage_simul = shortage.copy()
+    
+    # Modify exogenous variables based on whether they are removed
+    for t in range(4, timesteps):
+        if remove_grpe:
+            grpe_simul[timesteps] = 0
+        if remove_grpf:
+            grpf_simul[timesteps] = 0
+        if remove_vu:
+            vu_simul[timesteps] = 0
+        if remove_shortage:
+            shortage_simul[timesteps] = 0
 
-    #  Initialize cell array of shocks added
+
+    #  Initialize list of shocks added
     shocks_removed = []
     if remove_grpe:
         shocks_removed.append("grpe")
@@ -233,7 +246,10 @@ if __name__ == "__main__":
         "gcpi_simul": gcpi_simul,
         "diffcpicf_simul": diffcpicf_simul,
         "cf10_simul": cf10_simul,
-        "cf1_simul": cf1_simul
+        "cf1_simul": cf1_simul,
+        "grpf_simul": grpf_simul,
+        "vu_simul": vu_simul,
+        "shortage_simul": shortage_simul
     })
 
     # Export Data

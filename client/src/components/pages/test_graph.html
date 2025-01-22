@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stacked Bar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+      // Nested list of values
+      const data = [
+        [10, 20, 30], // Variable 1 values
+        [15, 25, 35], // Variable 2 values
+        [5, 10, 15], // Variable 3 values
+      ];
+
+      // Labels for the x-axis (categories)
+      const labels = ["Category 1", "Category 2", "Category 3"];
+
+      // Prepare datasets
+      const datasets = [
+        {
+          label: "Variable 1",
+          data: data[0], // First array
+          backgroundColor: "rgba(255, 99, 132, 0.5)", // Color with transparency
+        },
+        {
+          label: "Variable 2",
+          data: data[1], // Second array
+          backgroundColor: "rgba(54, 162, 235, 0.5)",
+        },
+        {
+          label: "Variable 3",
+          data: data[2], // Third array
+          backgroundColor: "rgba(75, 192, 192, 0.5)",
+        },
+      ];
+
+      // Create the chart
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: labels,
+          datasets: datasets,
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+          },
+          scales: {
+            x: {
+              stacked: true, // Stack bars on the x-axis
+            },
+            y: {
+              stacked: true, // Stack bars on the y-axis
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

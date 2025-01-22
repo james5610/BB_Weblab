@@ -20,7 +20,7 @@ const run_econ_model = async (
     removeVuSwitch = String(removeVuSwitch)
     removeShortageSwitch = String(removeShortageSwitch)
     updateGraphsSwitch = String(updateGraphsSwitch)
-  const scriptPath = `./server/econ_model/code/Python/dynamic_simul.py ${addResidualsSwitch} ${addGrpeSwitch} ${removeGrpfSwitch} ${removeVuSwitch} ${removeShortageSwitch} ${updateGraphsSwitch}`;
+  const scriptPath = `./server/econ_model/code/Python/dynamic_simul.py ${addResidualsSwitch} ${removeGrpeSwitch} ${removeGrpfSwitch} ${removeVuSwitch} ${removeShortageSwitch} ${updateGraphsSwitch}`;
 
   command = `python ${scriptPath}`;
   const { stdout } = await execPromise(command);

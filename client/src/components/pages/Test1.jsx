@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import "../../utilities.css";
 import "./Test1.css";
 import { get, post } from "../../utilities";
 import { UserContext } from "../App";
+import StackedBarChart from "./StackedBarChart";
 
 const Skeleton = () => {
   const { userId, handleLogin, handleLogout } = useContext(UserContext);
@@ -16,9 +17,10 @@ const Skeleton = () => {
       removeVuSwitch: removeVuSwitch.checked,
       removeShortageSwitch: removeShortageSwitch.checked,
       updateGraphsSwitch: updateGraphsSwitch.checked,
+      dummyVar: false, // We add this dummy var so a random "?" doesn't appear at end of get request
     };
     let queryString = new URLSearchParams(params).toString();
-    let url = `./api/run_econ_model?${queryString}`;
+    let url = `./api/run_econ_model?${queryString} `;
     get(url).then((results) => {
       console.log(results);
     });
@@ -135,91 +137,100 @@ const Skeleton = () => {
         <div className="Run-button" />
       </div>
 
-      {/* Grid laying out options */}
+      {/* Lay out flexboxes */}
+      <div className="container">
+        <div className="leftDiv">
+          {/* Grid laying out options */}
 
-      <div className="Grid-container">
-        {/* Row 1 Col 1 */}
-        <div className="Text-column">
-          <p>Add Residuals</p>
+          <div className="Grid-container">
+            {/* Row 1 Col 1 */}
+            <div className="Text-column">
+              <p>Add Residuals</p>
+            </div>
+
+            {/* Row 1 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="addResidualsSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="addResidualsStatus">OFF</p>
+            </div>
+
+            {/* Row 2 Col 1*/}
+            <div className="Text-column">
+              <p>Remove GRPE</p>
+            </div>
+
+            {/* Row 2 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="removeGrpeSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="removeGrpeStatus">OFF</p>
+            </div>
+
+            {/* Row 3  Col 1*/}
+            <div className="Text-column">
+              <p>Remove GRPF</p>
+            </div>
+
+            {/* Row 3 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="removeGrpfSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="removeGrpfStatus">OFF</p>
+            </div>
+
+            {/* Row 4  Col 1*/}
+            <div className="Text-column">
+              <p>Remove V/U</p>
+            </div>
+
+            {/* Row 4 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="removeVuSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="removeVuStatus">OFF</p>
+            </div>
+
+            {/* Row 5  Col 1*/}
+            <div className="Text-column">
+              <p>Remove Shortage</p>
+            </div>
+
+            {/* Row 5 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="removeShortageSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="removeShortageStatus">OFF</p>
+            </div>
+
+            {/* Row 6  Col 1*/}
+            <div className="Text-column">
+              <p>Update Graphs</p>
+            </div>
+
+            {/* Row 6 Col 2 */}
+            <div className="switch-container">
+              <label className="switch">
+                <input type="checkbox" id="updateGraphsSwitch" />
+                <span className="slider"></span>
+              </label>
+              <p id="updateGraphsStatus">OFF</p>
+            </div>
+          </div>
         </div>
-
-        {/* Row 1 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="addResidualsSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="addResidualsStatus">OFF</p>
-        </div>
-
-        {/* Row 2 Col 1*/}
-        <div className="Text-column">
-          <p>Remove GRPE</p>
-        </div>
-
-        {/* Row 2 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="removeGrpeSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="removeGrpeStatus">OFF</p>
-        </div>
-
-        {/* Row 3  Col 1*/}
-        <div className="Text-column">
-          <p>Remove GRPF</p>
-        </div>
-
-        {/* Row 3 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="removeGrpfSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="removeGrpfStatus">OFF</p>
-        </div>
-
-        {/* Row 4  Col 1*/}
-        <div className="Text-column">
-          <p>Remove V/U</p>
-        </div>
-
-        {/* Row 4 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="removeVuSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="removeVuStatus">OFF</p>
-        </div>
-
-        {/* Row 5  Col 1*/}
-        <div className="Text-column">
-          <p>Remove Shortage</p>
-        </div>
-
-        {/* Row 5 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="removeShortageSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="removeShortageStatus">OFF</p>
-        </div>
-
-        {/* Row 6  Col 1*/}
-        <div className="Text-column">
-          <p>Update Graphs</p>
-        </div>
-
-        {/* Row 6 Col 2 */}
-        <div className="switch-container">
-          <label className="switch">
-            <input type="checkbox" id="updateGraphsSwitch" />
-            <span className="slider"></span>
-          </label>
-          <p id="updateGraphsStatus">OFF</p>
+        <div className="rightDiv">
+          {/* Graph Staging Grounds */}
+          <StackedBarChart />
         </div>
       </div>
     </>
