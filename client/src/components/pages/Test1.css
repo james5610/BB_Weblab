@@ -4,11 +4,10 @@
 
 .Run-button {
     /* make it responsive */
-    max-width: 200%;
-    width: 200%;
     height: auto;
+
+    width: 200%;
     display: block;
-    /* div height to be the same as width*/
     padding-top: 100%;
   
     /* Centering on image`s center*/
@@ -31,10 +30,10 @@
 /* Container for the grid */
 .Grid-container {
   display: grid; /* Enable grid layout */
-  grid-template-columns: 1fr 1fr; /* Create two equal columns */
-  grid-template-rows: repeat(6, auto); /* Height based on content */
-  gap: 0px 10px;
-  padding: 5px; /* Add padding around the grid */
+  grid-template-columns: 0.5fr 0.2fr; /* Create two equal columns */
+  grid-template-rows: repeat(6, auto);
+  gap: 0px 0px;
+  padding: 0px 5px; /* Add padding around the grid */
   max-width: 500px; /* Set a maximum width for the container */
   max-height: 100px; 
   margin: auto 0; /* Centering options */
@@ -43,8 +42,10 @@
 
 /* Text column styling */
 .Text-column {
-  font-size: 32px;
-  line-height: 1.6;
+  font-size: 24px;
+  line-height: 1.2;
+  height: auto;
+  padding: 2px; /* Add small padding inside text cells */
 }
 
 /* Image column styling */
@@ -52,8 +53,9 @@
   display: flex; /* Use flexbox for vertical alignment */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  max-width: 50%;
+  max-width: 40%;
   height: auto;
+  margin: 0; /* Remove extra margins around images */
 }
 
 /*********** Styling for Switches ****************/
@@ -63,7 +65,7 @@
   flex-direction: column;
   align-items: center;
   font-family: Arial, sans-serif;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 /* Switch wrapper */
@@ -121,8 +123,8 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  border: 1px solid black;
+  align-items: top;
+  /* border: 1px solid black; */
   padding: 10px;
 }
 
@@ -136,5 +138,5 @@ input:checked + .slider:before {
 .rightDiv {
   /* background-color: lightblue; */
   padding: 20px;
-  flex: 1;
+  flex: 3;
 }

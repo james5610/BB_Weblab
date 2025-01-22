@@ -23,7 +23,7 @@ const Skeleton = () => {
       dummyVar: false, // We add this dummy var so a random "?" doesn't appear at end of get request
     };
     let queryString = new URLSearchParams(params).toString();
-    let url = `./api/run_econ_model?${queryString} `;
+    let url = `./api/run_econ_model?${queryString}`;
     get(url).then((results) => {
       console.log(results);
     });
@@ -160,12 +160,39 @@ const Skeleton = () => {
       ) : (
         <GoogleLogin onSuccess={handleLogin} onError={(err) => console.log(err)} />
       )}
+<div>
+  <p>Steps to run model</p>
+  <li>Toggle options on left</li>
+  <li>Hit the RUN Button to run the model</li>
+  <li>Hit the Update Graph Button to view changes</li>
+  <li>Note that the RUN button and then the Update Graph button must be pressed in that order each time the graph wants to be updated</li>
+  <li>Also note that because of the way we initialize our equations, the first four data points will always be the same</li>
+  <li>This model shows GCPI, or CPI inflation and how it is affected by the variou toggles. In the future, additional variables will be available, as well as a way to see the contribution of each toggle to headline numbers.</li>
+  <li>You can view various messages and checks in the console. In the future, these will be removed.</li>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+</div>
+
 
       {/* Run model*/}
       <div
         className="Run-buttonContainer"
         onClick={() => {
-          // run_econ_model();
+          run_econ_model();
           update_data();
           // console.log(`From Run button:`)
           // console.log(sharedData)
@@ -265,13 +292,13 @@ const Skeleton = () => {
             </div>
           </div>
         </div>
-        <div className="rightDiv">Nothing here for now</div>
-
-        {/* Graph Staging Grounds */}
-        <DataProvider>
-          <RunButton />
-          <StackedBarChart />
-        </DataProvider>
+        <div className="rightDiv">
+          {/* Graph Staging Grounds */}
+          <DataProvider>
+            <RunButton />
+            <StackedBarChart />
+          </DataProvider>
+        </div>
       </div>
     </>
   );

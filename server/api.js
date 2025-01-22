@@ -48,9 +48,14 @@ router.post("/initsocket", (req, res) => {
 const run_econ_model = require("./run_econ_model.jsx");
 
 router.get("/run_econ_model", async (req, res) => {
+  // const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
+  //   req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
+  //   req.query.removeShortageSwitch, req.query.updateGraphsSwitch);
+  // res.send(results);
+
   const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
-    req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
-    req.query.removeShortageSwitch, req.query.updateGraphsSwitch);
+      req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
+      req.query.removeShortageSwitch, req.query.updateGraphsSwitch);
   res.send(results);
 });
 
