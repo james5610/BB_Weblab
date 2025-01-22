@@ -55,7 +55,7 @@ router.get("/run_econ_model", async (req, res) => {
 
   const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
       req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
-      req.query.removeShortageSwitch, req.query.updateGraphsSwitch);
+      req.query.removeShortageSwitch);
   res.send(results);
 });
 
