@@ -19,7 +19,6 @@ if __name__ == "__main__":
         remove_grpf = sys.argv[3]
         remove_vu = sys.argv[4]
         remove_shortage = sys.argv[5]
-        update_graphs = sys.argv[6]
     except Exception as e:
         print("Error in importing sys.argv:", e)
     
@@ -28,7 +27,6 @@ if __name__ == "__main__":
     # remove_grpf = 'false'
     # remove_vu = 'false'
     # remove_shortage = 'false'
-    # update_graphs = 'false'
 
     # Convert String arguments to Booleans
     string_to_bool = {
@@ -45,7 +43,6 @@ if __name__ == "__main__":
         remove_grpf = string_to_bool.get(remove_grpf)
         remove_vu = string_to_bool.get(remove_vu)
         remove_shortage = string_to_bool.get(remove_shortage)
-        update_graphs = string_to_bool.get(update_graphs)
     except Exception as e:
         print(f"Input parameter not properly formatted. Error: {e}")
         sys.exit(1)
@@ -291,57 +288,6 @@ if __name__ == "__main__":
     print("Simulation complete!")
     print(list(results_df))
     print([add_residuals, remove_grpe, remove_grpf,
-          remove_vu, remove_shortage, update_graphs])
+          remove_vu, remove_shortage])
 
     
-    
-    
-
-    # ***************** Plot the results if update_graphs is True ****************************
-    if update_graphs:
-        plt.figure(figsize=(10, 6))
-
-        # GW Simulation
-        plt.plot(period, gw, label="Actual GW")
-        plt.plot(period[4:], gw_simul[4:],
-                 label="Simulated GW", linestyle="--")
-        plt.title("GW Simulation")
-        plt.xlabel("Time Period")
-        plt.ylabel("GW")
-        plt.legend()
-        plt.show()
-
-        # GCPI Simulation
-        plt.figure(figsize=(10, 6))
-        plt.plot(period, gcpi, label="Actual GCPI")
-        plt.plot(period[4:], gcpi_simul[4:],
-                 label="Simulated GCPI", linestyle="--")
-        plt.title("GCPI Simulation")
-        plt.xlabel("Time Period")
-        plt.ylabel("GCPI")
-        plt.legend()
-        plt.show()
-
-        # CF1 Simulation
-        plt.figure(figsize=(10, 6))
-        plt.plot(period, cf1, label="Actual CF1")
-        plt.plot(period[4:], cf1_simul[4:],
-                 label="Simulated CF1", linestyle="--")
-        plt.title("CF1 Simulation")
-        plt.xlabel("Time Period")
-        plt.ylabel("CF1")
-        plt.legend()
-        plt.show()
-
-        # CF10 Simulation
-        plt.figure(figsize=(10, 6))
-        plt.plot(period, cf10, label="Actual CF10")
-        plt.plot(period[4:], cf10_simul[4:],
-                 label="Simulated CF10", linestyle="--")
-        plt.title("CF10 Simulation")
-        plt.xlabel("Time Period")
-        plt.ylabel("CF10")
-        plt.legend()
-        plt.show()
-
- 
