@@ -18,8 +18,7 @@ const Skeleton = () => {
       removeGrpeSwitch: removeGrpeSwitch.checked,
       removeGrpfSwitch: removeGrpfSwitch.checked,
       removeVuSwitch: removeVuSwitch.checked,
-      removeShortageSwitch: removeShortageSwitch.checked,
-      updateGraphsSwitch: updateGraphsSwitch.checked,
+      removeShortageSwitch: removeShortageSwitch.checked
     };
 
     get("/api/run_econ_model", params).then((results) => {
