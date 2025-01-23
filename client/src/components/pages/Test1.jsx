@@ -23,7 +23,7 @@ const Skeleton = () => {
     };
 
     get("/api/run_econ_model", params).then((results) => {
-        console.log(results);
+        console.log(`Results under line 26 Test1.jsx: ${JSON.stringify(results)}`);
     });
   };
 
