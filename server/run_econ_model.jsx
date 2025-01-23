@@ -26,7 +26,6 @@ const run_econ_model = async (
   command = `python ${scriptPath}`;
   const { stdout } = await execPromise(command);
   // console.log(`Script Output: ${stdout}`)
-  return {Item1: "Hellloooooo run-econ_model line 29"}
 
   return { stdout };
 };
