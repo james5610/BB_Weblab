@@ -12,7 +12,6 @@ const run_econ_model = async (
   removeShortageSwitch,
 ) => {
 
-  return {Item1: "Hellloooooo run-econ_model line 15"}
     
   // Convert to Strings
   addResidualsSwitch = String(addResidualsSwitch);
@@ -22,6 +21,7 @@ const run_econ_model = async (
   removeShortageSwitch = String(removeShortageSwitch);
 
   const scriptPath = `./server/econ_model/code/Python/dynamic_simul.py ${addResidualsSwitch} ${removeGrpeSwitch} ${removeGrpfSwitch} ${removeVuSwitch} ${removeShortageSwitch}`;
+  return {Item1: "Hellloooooo run-econ_model line 24"}
 
 
   command = `python ${scriptPath}`;
