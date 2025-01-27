@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
-import Skeleton from "./components/pages/Skeleton";
 import NotFound from "./components/pages/NotFound";
 import Test1 from "./components/pages/Test1"
+import Irfs from "./components/pages/Irfs"
 
 import {
   createBrowserRouter,
@@ -20,7 +20,7 @@ const GOOGLE_CLIENT_ID = "933570092873-r67d5fh766dlsqqeu8m6trg42ja27cdh.apps.goo
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<NotFound />} element={<App />}>
-      <Route path="/" element={<Test1 />}/>
+      <Route path="/" element={<Irfs/>}/>
     </Route>
   )
 )

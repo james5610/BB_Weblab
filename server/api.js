@@ -44,25 +44,35 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+const run_irfs = require("./run_irfs.jsx");
+
+router.get("/run_irfs", async (req, res) => {
+  const results = await run_irfs.run_irfs(req.query.addGrpeSwitch,
+    req.query.addGrpfSwitch, req.query.addVuSwitch, req.query.addShortageSwitch);
+  res.send(results);
+});
+
+const update_irf_data = require("./update_irf_data.jsx");
+
+router.get("/update_irf_data", async (req, res) => {
+  const data = await update_irf_data.update_irf_data();
+  res.send(data);
+});
+
 
 const run_econ_model = require("./run_econ_model.jsx");
 
 router.get("/run_econ_model", async (req, res) => {
-  // const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
-  //   req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
-  //   req.query.removeShortageSwitch, req.query.updateGraphsSwitch);
-  // res.send(results);
-
   const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
       req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
       req.query.removeShortageSwitch);
   res.send(results);
 });
 
-const update_data = require("./update_data.jsx");
+const update_dynamic_simul_data = require("./update_dynamic_simul_data.jsx");
 
-router.get("/update_data", async (req, res) => {
-  const data = await update_data.update_data();
+router.get("/update_dynamic_simul_data", async (req, res) => {
+  const data = await update_dynamic_simul_data.update_dynamic_simul_data();
   res.send(data);
 });
 

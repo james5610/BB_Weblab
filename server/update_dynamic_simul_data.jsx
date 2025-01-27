@@ -1,7 +1,7 @@
 const Excel = require('exceljs');
 
 
-const update_data = async () => {
+const update_dynamic_simul_data = async () => {
     var workbook = new Excel.Workbook();
     await workbook.xlsx.readFile('./server/econ_model/data/output_data/dynamic_simul_results_weblab.xlsx').then(() => {
         worksheet = workbook.getWorksheet(1);
@@ -16,5 +16,5 @@ const update_data = async () => {
     return data
 }
 
-// update_data().then((data) => {console.log(data)})
-module.exports = {update_data};
+// update_dynamic_simul_data().then((data) => {console.log(data)})
+module.exports = {update_dynamic_simul_data};
