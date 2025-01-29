@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import NotFound from "./components/pages/NotFound";
-import Irfs from "./components/pages/irfs"
+import Irfs from "./components/pages/Irfs"
 import About from "./components/pages/About";
 
 import {
@@ -20,8 +20,8 @@ const GOOGLE_CLIENT_ID = "933570092873-r67d5fh766dlsqqeu8m6trg42ja27cdh.apps.goo
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route errorElement={<NotFound />} element={<App />}>
-      <Route path="/" element={<Irfs/>}/>
-      <Route path="/About" element={<About/>}/>
+      <Route path="/" element={<Irfs />}/>
+      <Route path="/About" element={<About />}/>
     </Route>
   )
 )

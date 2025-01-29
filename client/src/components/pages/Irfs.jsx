@@ -2,7 +2,6 @@ import React, {useContext} from "react";
 import "../../utilities.css";
 import "./Irfs.css";
 import NavBar from "../modules/NavBar";
-import { UserContext } from "../App";
 import Chart_Irfs from "./ChartIrfs";
 // Create the DataContext for shared state; helps update graph when run button is pressed
 import { DataProvider } from "./DataContext";
