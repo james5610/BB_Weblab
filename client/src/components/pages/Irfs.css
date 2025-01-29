@@ -8,7 +8,7 @@
   max-width: 500px; /* Set a maximum width for the container */
   max-height: 100px; 
   margin: auto 0; /* Centering options */
-  align-items: top; /* Vertically center items in all grid cells */
+  align-items: top; 
 }
 
 /* Text column styling */
@@ -16,7 +16,7 @@
   font-size: 20px;
   line-height: 1.2;
   height: auto;
-  padding: 2px; /* Add small padding inside text cells */
+  padding: 0px;
 }
 
 /*************** Flexbox Code ****************/
@@ -27,17 +27,18 @@
   align-items: top;
   /* border: 1px solid black; */
   padding: 10px;
+  padding-bottom: 200px;
 }
 
 .leftDiv {
   /* background-color: lightblue; */
-  padding: 20px;
+  /* padding: 20px; */
   margin-right: 10px;
   flex: 1;
 }
 
 .rightDiv {
   /* background-color: lightblue; */
-  padding: 20px;
+  /* padding: 20px; */
   flex: 3;
 }

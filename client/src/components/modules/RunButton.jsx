@@ -22,7 +22,7 @@ const run_irfs = async (sharedData, setSharedData) => {
     
     await get("/api/run_irfs", params).then((results) => {
     //   console.log(`Results under line 26 Test1.jsx: ${JSON.stringify(results)}`);
-      console.log(`Params prior to running: ${sharedData}`)
+      // console.log(`Params prior to running: ${sharedData}`)
     //   console.log({ results });
     });
     let response = await get("./api/update_irf_data");
@@ -41,7 +41,7 @@ const RunButton = () => {
   const handleRun = async () => {
     await run_irfs(sharedData, setSharedData);
     setSharedData((prevData) => ({ ...prevData, runCount: sharedData.runCount + 1}));
-    console.log(sharedData.runCount) // we use this variable to control when the chart actually updates; otherwise, it updates anytime any value in sharedData updates
+    // console.log(sharedData.runCount) // we use this variable to control when the chart actually updates; otherwise, it updates anytime any value in sharedData updates
   };
 
   return <button onClick={handleRun}>Update Graph</button>;

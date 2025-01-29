@@ -53,19 +53,50 @@ const ChartIrfs = () => {
             },
           },
           scales: {
+
             x: {
               type: "category", // Use "category" scale for x-axis
               title: {
                 display: true,
                 text: "Period",
+                font: {
+                  size: 16,
+                },
+                color: "black",
               },
+              
+              ticks: {
+                color: "black", // Change x-axis label color
+              },
+              grid: {
+                color: "rgba(0, 0, 0, 1)",
+                display: false,
+              },
+              border: {
+                color: "black", // X-axis line color
+              },
+              
             },
             y: {
               type: "linear", // Use "linear" scale for y-axis
               beginAtZero: false,
               title: {
                 display: true,
-                text: "Standard Deviations",
+                text: "Percent",
+                font: {
+                  size: 16,
+                },
+                color: "black",
+              },
+              grid: {
+                color: "rgba(0, 0, 0, 1)",
+                display: false,
+              },
+              ticks: {
+                color: "black", // Change x-axis label color
+              },
+              border: {
+                color: "black", // X-axis line color
               },
             },
           },

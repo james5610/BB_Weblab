@@ -10,7 +10,7 @@ const GrpeSlider = () => {
   };
 
   return (
-    <div style={{ width: "200px", margin: "0px auto", textAlign: "center" }}>
+    <div style={{ width: "200px", margin: "0px 0px", textAlign: "center" }}>
       <input
         type="range"
         min="0"
