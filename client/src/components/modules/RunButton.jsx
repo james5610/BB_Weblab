@@ -1,9 +1,6 @@
 import { DataContext } from "../pages/DataContext";
 import React, { useContext } from "react";
 import { get, post } from "../../utilities";
-import { utils } from "xlsx";
-import RhoVuSlider from "./RhoVuSlider";
-import RhoShortageSlider from "./RhoShortageSlider";
 const run_irfs = async (sharedData, setSharedData) => {
 
     // const { setSharedData } = useContext(DataContext);

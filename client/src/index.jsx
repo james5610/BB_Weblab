@@ -2,10 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import NotFound from "./components/pages/NotFound";
-import Test1 from "./components/pages/Test1"
 import Irfs from "./components/pages/irfs"
-import FullPageImage from "./components/pages/FullPageImage"
-import StoryTellingComponent from "./components/pages/StoryTellingComponent";
 import About from "./components/pages/About";
 
 import {
