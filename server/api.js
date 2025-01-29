@@ -47,8 +47,16 @@ router.post("/initsocket", (req, res) => {
 const run_irfs = require("./run_irfs.jsx");
 
 router.get("/run_irfs", async (req, res) => {
-  const results = await run_irfs.run_irfs(req.query.addGrpeSwitch,
-    req.query.addGrpfSwitch, req.query.addVuSwitch, req.query.addShortageSwitch);
+  const results = await run_irfs.run_irfs(
+    req.query.grpeSlider,
+    req.query.grpfSlider,
+    req.query.vuSlider,
+    req.query.shortageSlider,
+    req.query.rhoGrpeSlider,
+    req.query.rhoGrpfSlider,
+    req.query.rhoVuSlider,
+    req.query.rhoShortageSlider
+  );
   res.send(results);
 });
 
@@ -59,15 +67,14 @@ router.get("/update_irf_data", async (req, res) => {
   res.send(data);
 });
 
+// const run_econ_model = require("./run_econ_model.jsx");
 
-const run_econ_model = require("./run_econ_model.jsx");
-
-router.get("/run_econ_model", async (req, res) => {
-  const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
-      req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch, 
-      req.query.removeShortageSwitch);
-  res.send(results);
-});
+// router.get("/run_econ_model", async (req, res) => {
+//   const results = await run_econ_model.run_econ_model(req.query.addResidualsSwitch,
+//       req.query.removeGrpeSwitch, req.query.removeGrpfSwitch, req.query.removeVuSwitch,
+//       req.query.removeShortageSwitch);
+//   res.send(results);
+// });
 
 const update_dynamic_simul_data = require("./update_dynamic_simul_data.jsx");
 

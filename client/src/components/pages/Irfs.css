@@ -1,32 +1,3 @@
-.Run-buttonContainer {
-  padding: 0% 48%;
-}
-
-.Run-button {
-    /* make it responsive */
-    height: auto;
-
-    width: 200%;
-    display: block;
-    padding-top: 100%;
-  
-    /* Centering on image`s center*/
-    background-position-y: center;
-    background-position-x: center;
-    background-repeat: no-repeat;
-  
-    /* it makes the clue thing, takes smaller dimension to fill div */
-    background-size: cover;
-  
-    /* it is optional, for making this div centered in parent*/
-    margin: 0 auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("../assets/run_button.png");
-}
-
 /* Container for the grid */
 .Grid-container {
   display: grid; /* Enable grid layout */
@@ -37,88 +8,18 @@
   max-width: 500px; /* Set a maximum width for the container */
   max-height: 100px; 
   margin: auto 0; /* Centering options */
-  align-items: center; /* Vertically center items in all grid cells */
+  align-items: top; /* Vertically center items in all grid cells */
 }
 
 /* Text column styling */
 .Text-column {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
   height: auto;
   padding: 2px; /* Add small padding inside text cells */
 }
 
-/* Image column styling */
-.Image-column img {
-  display: flex; /* Use flexbox for vertical alignment */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  max-width: 40%;
-  height: auto;
-  margin: 0; /* Remove extra margins around images */
-}
-
-/*********** Styling for Switches ****************/
-/* Container styling */
-.switch-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  margin-top: 20px;
-}
-
-/* Switch wrapper */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-/* Hide default checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Slider (the visible switch part) */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px; /* Rounded edges for the slider */
-}
-
-/* Slider circle */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%; /* Make the circle round */
-}
-
-/* Change background color when checked */
-input:checked + .slider {
-  background-color: #4caf50;
-}
-
-/* Move the circle when checked */
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-/* Flexbox Code */
+/*************** Flexbox Code ****************/
 .container {
   display: flex;
   flex-direction: row;

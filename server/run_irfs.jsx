@@ -5,20 +5,17 @@ const util = require("util");
 const execPromise = util.promisify(exec);
 
 const run_irfs = async (
-  addGrpeSwitch,
-  addGrpfSwitch,
-  addVuSwitch,
-  addShortageSwitch,
+  grpeSlider,
+  grpfSlider,
+  vuSlider,
+  shortageSlider,
+  rhoGrpeSlider,
+  rhoGrpfSlider,
+  rhoVuSlider,
+  rhoShortageSlider
 ) => {
 
-
-  // Convert to Strings
-  addGrpeSwitch = String(addGrpeSwitch);
-  addGrpfSwitch = String(addGrpfSwitch);
-  addVuSwitch = String(addVuSwitch);
-  addShortageSwitch = String(addShortageSwitch);
-
-  const scriptPath = `./server/econ_model/code/Python/simulation_full_irfs.py ${addGrpeSwitch} ${addGrpfSwitch} ${addVuSwitch} ${addShortageSwitch}`;
+  const scriptPath = `./server/econ_model/code/Python/simulation_full_irfs.py ${grpeSlider} ${grpfSlider} ${vuSlider} ${shortageSlider} ${rhoGrpeSlider} ${rhoGrpfSlider} ${rhoVuSlider} ${rhoShortageSlider}`;
   // const scriptPath = `./server/econ_model/code/Python/simulation_full_irfs.py`;
 
 

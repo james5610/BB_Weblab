@@ -56,37 +56,37 @@ if __name__ == "__main__":
     cf10_beta = pd.read_excel(os.path.join(
         coefficients_path, "eq_coefficients.xlsx"), sheet_name="cf10", index_col=0).beta
     
+    # # Options for running model. 
+    # try: 
+    #     add_grpe_shock = sys.argv[1]
+    #     add_grpf_shock = sys.argv[2]
+    #     add_vu_shock = sys.argv[3]
+    #     add_shortage_shock = sys.argv[4]
+    #     add_gw_shock = False
+    #     add_gcpi_shock = False
+    #     add_cf1_shock = False
+    #     add_cf10_shock = False
+    # except Exception as e:
+    #     print("Error in importing sys.argv:", e)
+        
     # Options for running model. 
+    # Rho denotes how fast they return (0 indicates a 1-period shock, 1 denotes a
+    # persistent shock)
     try: 
-        add_grpe_shock = sys.argv[1]
-        add_grpf_shock = sys.argv[2]
-        add_vu_shock = sys.argv[3]
-        add_shortage_shock = sys.argv[4]
+        grpe_slider = float(sys.argv[1])
+        grpf_slider = float(sys.argv[2])
+        vu_slider = float(sys.argv[3])
+        shortage_slider = float(sys.argv[4])
+        rho_grpe = float(sys.argv[5])/100
+        rho_grpf = float(sys.argv[6])/100
+        rho_vu = float(sys.argv[7])/100
+        rho_shortage = float(sys.argv[8])/100
         add_gw_shock = False
         add_gcpi_shock = False
         add_cf1_shock = False
         add_cf10_shock = False
     except Exception as e:
         print("Error in importing sys.argv:", e)
-        
-        
-    # Convert String arguments to Booleans
-    string_to_bool = {
-        "true": True,
-        "false": False,
-        True: True,
-        False: False
-    }
-    
-    # Convert Parameters to Bools
-    try:
-        add_grpe_shock = string_to_bool.get(add_grpe_shock)
-        add_grpf_shock = string_to_bool.get(add_grpf_shock)
-        add_vu_shock = string_to_bool.get(add_vu_shock)
-        add_shortage_shock = string_to_bool.get(add_shortage_shock)
-    except Exception as e:
-        print(f"Input parameter not properly formatted. Error: {e}")
-        sys.exit(1)
             
     # Import data
     # All data is initialized to zero to reflect that they are in steady state
@@ -149,10 +149,6 @@ if __name__ == "__main__":
     shock_cf1 = np.zeros(4)
     shock_cf10 = np.zeros(4)
        
-    rho_grpe = 0.0
-    rho_grpf = 0.0
-    rho_vu = 1.0
-    rho_shortage = 0.0
     rho_gw = 0.0
     rho_gcpi = 0.0
     rho_cf1 = 0.0
@@ -202,17 +198,17 @@ if __name__ == "__main__":
         shock_cf1[t] = 0
         shock_cf10[t] = 0
        
-        if add_grpe_shock and t == 4: # one time increase to rate, i.e. permanent incrase in level
-            shock_grpe[t] = shock_val_grpe
+        if t == 4: # one time increase to rate, i.e. permanent incrase in level
+            shock_grpe[t] = grpe_slider*shock_val_grpe
     
-        if add_grpf_shock and t == 4: # one time increase to rate, i.e. permanent incrase in level
-            shock_grpf[t] = shock_val_grpf
+        if t == 4: # one time increase to rate, i.e. permanent incrase in level
+            shock_grpf[t] = grpf_slider*shock_val_grpf
     
-        if add_vu_shock and t == 4: # permanent increase in level (due to rho)
-            shock_vu[t] = shock_val_vu
+        if t == 4: # permanent increase in level (due to rho)
+            shock_vu[t] = vu_slider*shock_val_vu
     
-        if add_shortage_shock and t == 4: # one time increase
-            shock_shortage[t] = shock_val_shortage
+        if t == 4: # one time increase
+            shock_shortage[t] = shortage_slider*shock_val_shortage
     
         if add_gw_shock and t == 4: # one time increase
             shock_gw[t] = shock_val_gw_residual
@@ -305,7 +301,7 @@ if __name__ == "__main__":
     new_period = np.array([])
     
     for step in range(timesteps):
-        lbl = f"Q{quarter} {year}$"
+        lbl = f"Q{quarter} {year}"
         new_period = np.append(new_period, lbl)
         if quarter == 4:
             quarter = 1

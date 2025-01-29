@@ -20,7 +20,8 @@ const ChartIrfs = () => {
         {
           label: "GCPI",
           data: sharedData.gcpi_simul, // Third array
-          backgroundColor: "rgba(75, 192, 192, 0.5)",
+          borderColor: 'rgb(128, 0, 0)', // Line color
+          backgroundColor: "rgb(128, 0, 0)",
         },
       ];
 
@@ -53,7 +54,6 @@ const ChartIrfs = () => {
           },
           scales: {
             x: {
-              stacked: true, // Stack bars on the x-axis
               type: "category", // Use "category" scale for x-axis
               title: {
                 display: true,
@@ -77,7 +77,7 @@ const ChartIrfs = () => {
         myChart.destroy();
       };
     }
-  }, [sharedData]); // Run this effect whenever "data" changes
+  }, [sharedData.runCount]); // Run this effect whenever "data" changes
 
   return <canvas ref={chartRef} />;
 };
